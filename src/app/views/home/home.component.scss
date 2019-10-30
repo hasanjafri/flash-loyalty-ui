@@ -1,0 +1,15 @@
+fl-base {
+  opacity: 0;
+  height: 100%;
+
+  .fl-grid--root {
+    height: 100%
+  }
+}
+
+.fl-page--loaded {
+  fl-base {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  }
+}
