@@ -11,30 +11,36 @@ import { SplashScreenService } from './services/splash-screen.service';
 import { TranslationService } from './services/translation.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'fl-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
+  loader: boolean;
   private subscriptions: Subscription[] = [];
 
-  constructor(private translationService: TranslationService, private router: Router, private splashScreenService: SplashScreenService) {
+  constructor(
+    private translationService: TranslationService,
+    private router: Router,
+    private splashScreenService: SplashScreenService
+  ) {
     this.translationService.loadTranslations(enLang, chLang, esLang, jpLang, deLang, frLang);
   }
 
   ngOnInit(): void {
-    const routerSubscription = this.router.events.subscribe(event => {
+    const routerSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.splashScreenService.hide();
         window.scrollTo(0, 0);
         setTimeout(() => {
-          document.
-        }, 500)
+          document.body.classList.add('fl-page--loaded');
+        }, 500);
       }
     });
+    this.subscriptions.push(routerSubscription);
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 }
