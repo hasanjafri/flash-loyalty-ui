@@ -7,9 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { HomeComponent } from './views/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, SplashScreenComponent],
+  declarations: [AppComponent, HomeComponent, SplashScreenComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

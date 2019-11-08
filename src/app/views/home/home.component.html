@@ -1,1 +1,7 @@
-<p>home works!</p>
+<ng-container *ngIf="selfLayout !== 'blank'; else blankLayout">
+  
+</ng-container>
+
+<ng-template #blankLayout>
+  <router-outlet></router-outlet>
+</ng-template>
